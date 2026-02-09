@@ -33,6 +33,63 @@ nav a {
   text-decoration: none;
 }
 
+/* Navbar Link Hover Effect */
+.nav-link {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #262626;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: .5s;
+  z-index: 1;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 2px solid #262626;
+  border-bottom: 2px solid #262626;
+  transform: scaleY(2);
+  opacity: 0;
+  transition: .3s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #262626;
+  transform: scale(0);
+  opacity: 0;
+  transition: .3s;
+  z-index: -1;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link:hover::before {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.nav-link:hover::after {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
 /* Lenis Smooth Scroll recommended styles */
 html.lenis,
 html.lenis body {
@@ -228,4 +285,34 @@ html.lenis body {
 
 .magic-button:hover .magic-button-lg::after {
   background-color: #fff;
+}
+
+/* Hover Underline Effect for Titles */
+.hover-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after,
+.hover-underline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ff0000, #00ffff);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+  transform: scaleX(1);
 }

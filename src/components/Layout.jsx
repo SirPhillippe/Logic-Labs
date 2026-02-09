@@ -168,19 +168,19 @@ const Layout = ({ children }) => {
             <nav ref={navRef} className="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-center items-center">
                 {/* Centered Nav with spacing and hover animations */}
                 <div className="nav-items flex items-center gap-6 md:gap-10 font-heading uppercase tracking-[0.2em] text-sm md:text-base">
-                    <a href="#home" className="text-dark hover:text-primary transition-all duration-300 ease-out font-bold no-underline hover:scale-105 hover:-translate-y-0.5 hover:tracking-[0.25em]">
+                    <a href="#home" className="nav-link">
                         Home
                     </a>
                     <span style={{ color: '#FF0000' }} className="text-xl font-bold">•</span>
-                    <a href="#about" className="text-dark hover:text-primary transition-all duration-300 ease-out font-bold no-underline hover:scale-105 hover:-translate-y-0.5 hover:tracking-[0.25em]">
+                    <a href="#about" className="nav-link">
                         About
                     </a>
                     <span style={{ color: '#FF0000' }} className="text-xl font-bold">•</span>
-                    <a href="#services" className="text-dark hover:text-primary transition-all duration-300 ease-out font-bold no-underline hover:scale-105 hover:-translate-y-0.5 hover:tracking-[0.25em]">
+                    <a href="#services" className="nav-link">
                         Capabilities
                     </a>
                     <span style={{ color: '#FF0000' }} className="text-xl font-bold">•</span>
-                    <a href="#contact" className="text-dark hover:text-primary transition-all duration-300 ease-out font-bold no-underline hover:scale-105 hover:-translate-y-0.5 hover:tracking-[0.25em]">
+                    <a href="#contact" className="nav-link">
                         Contact
                     </a>
                 </div>

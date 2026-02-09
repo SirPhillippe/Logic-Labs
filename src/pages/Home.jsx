@@ -94,16 +94,18 @@ const Home = () => {
                 <div className="hero-glow absolute top-0 right-0 w-[60vw] h-[60vw] bg-primary/20 blur-[150px] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3 z-0" />
 
 
-                <div ref={textRef} className="container mx-auto z-10" style={{ paddingTop: '220px' }}>
-                    {/* Title and Button Container */}
-                    <div className="flex items-end gap-8 mb-8">
-                        <h1 ref={titleRef} className="font-heading text-[8vw] md:text-[5vw] leading-[0.9] font-bold uppercase tracking-tight relative z-10" style={{ opacity: 0 }}>
+                <div ref={textRef} className="container mx-auto z-10" style={{ paddingTop: '180px' }}>
+                    {/* Title Container */}
+                    <div className="mb-8">
+                        <h1 ref={titleRef} className="hover-underline font-heading text-[7vw] md:text-[4.5vw] leading-[0.9] font-bold uppercase tracking-tight relative z-10" style={{ opacity: 0 }}>
                             Digital<br />
                             <span className="text-primary">Mastery</span>
                         </h1>
-                        <div className="pb-2">
-                            <MagicButton />
-                        </div>
+                    </div>
+
+                    {/* Centered Button */}
+                    <div className="flex justify-center mb-8">
+                        <MagicButton />
                     </div>
 
                     {/* Text - removed pill styling */}
