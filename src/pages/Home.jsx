@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Palette, Zap, Globe } from 'lucide-react';
 import MagicButton from '../components/MagicButton';
+import CursorParticles from '../components/CursorParticles';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -89,12 +90,14 @@ const Home = () => {
             {/* 1. HOME / HERO SECTION */}
             {/* 1. HOME / HERO SECTION */}
             <section id="home" ref={heroRef} className="min-h-screen flex flex-col px-6 md:px-20 relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/background2.jpg')" }}>
+                {/* Cursor Particle Effect */}
+                <CursorParticles />
                 {/* Dark overlay for text readability */}
                 <div className="absolute inset-0 bg-white/85 z-0"></div>
                 <div className="hero-glow absolute top-0 right-0 w-[60vw] h-[60vw] bg-primary/20 blur-[150px] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3 z-0" />
 
 
-                <div ref={textRef} className="container mx-auto z-10" style={{ paddingTop: '180px' }}>
+                <div ref={textRef} className="z-10" style={{ paddingTop: '180px', paddingLeft: '2rem' }}>
                     {/* Title Container */}
                     <div className="mb-8">
                         <h1 ref={titleRef} className="hover-underline font-heading text-[7vw] md:text-[4.5vw] leading-[0.9] font-bold uppercase tracking-tight relative z-10" style={{ opacity: 0 }}>

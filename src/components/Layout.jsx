@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Logo from './Logo';
+import CustomCursor from './CustomCursor';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +33,15 @@ const Layout = ({ children }) => {
 
         // Connect Lenis to ScrollTrigger
         lenis.on('scroll', ScrollTrigger.update);
+
+        // Track scroll position for back-to-top button
+        lenis.on('scroll', ({ scroll }) => {
+            if (scroll > 500) {
+                setShowBackToTop(true);
+            } else {
+                setShowBackToTop(false);
+            }
+        });
 
         // Add Lenis's requestAnimationFrame to GSAP's ticker
         // This ensures they are perfectly synced
@@ -125,13 +135,6 @@ const Layout = ({ children }) => {
                         overwrite: 'auto'
                     });
                 }
-
-                // Show/Hide BackToTop Button
-                if (scrollY > 500) {
-                    setShowBackToTop(true);
-                } else {
-                    setShowBackToTop(false);
-                }
             }
         });
 
@@ -144,7 +147,9 @@ const Layout = ({ children }) => {
     }, []);
 
     return (
-        <div className="bg-white text-dark min-h-screen font-body selection:bg-primary selection:text-white">
+        <div className="bg-white text-dark min-h-screen font-body selection:bg-primary selection:text-white cursor-none">
+            {/* Custom Cursor */}
+            <CustomCursor />
 
             {/* Background overlay during logo animation */}
             <div
@@ -191,9 +196,44 @@ const Layout = ({ children }) => {
             </main>
 
             {/* Back To Top Button */}
-            <div className={`fixed bottom-10 right-10 z-[49] transition-all duration-500 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-                <button className="back-to-top-btn" onClick={scrollToTop}>
-                    <svg className="back-to-top-icon" viewBox="0 0 384 512">
+            <div
+                style={{
+                    position: 'fixed',
+                    bottom: '40px',
+                    right: '40px',
+                    zIndex: 99999,
+                    opacity: showBackToTop ? 1 : 0,
+                    transform: showBackToTop ? 'translateY(0)' : 'translateY(20px)',
+                    transition: 'all 0.5s ease',
+                    pointerEvents: showBackToTop ? 'auto' : 'none'
+                }}
+            >
+                <button
+                    className="back-to-top-btn"
+                    onClick={scrollToTop}
+                    style={{
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '50%',
+                        backgroundColor: 'rgb(20, 20, 20)',
+                        border: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        boxShadow: '0px 0px 0px 4px rgba(180, 160, 255, 0.253)',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        transition: 'all 0.3s ease'
+                    }}
+                >
+                    <svg
+                        className="back-to-top-icon"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 384 512"
+                        style={{ fill: 'white', transition: 'transform 0.3s ease' }}
+                    >
                         <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
                     </svg>
                 </button>

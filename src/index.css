@@ -27,6 +27,12 @@ body {
   /* Prevent horizontal scroll from animations */
 }
 
+/* Hide default cursor when custom cursor is active */
+.cursor-none,
+.cursor-none * {
+  cursor: none !important;
+}
+
 /* Force navbar links to use custom colors, not browser defaults */
 nav a {
   color: inherit;
